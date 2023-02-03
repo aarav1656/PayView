@@ -1,0 +1,19 @@
+token_name = PayView_Course
+token_symbol = PVC
+nft_uri_json = __
+charge_per_nft =  10000000000000000 => 0.01 ETH / 1e16
+demo_vid_cid = bafybeibqtm5rksgtyh2sw4sotqvdapzk2a4dqbpsyqrz5wvlcu45vjark4
+
+hyperspace contract address = 0xAb7d8699688C87dDFE5974B47A449C872820818B
+
+again pasting "0xAb7d8699688C87dDFE5974B47A449C872820818B"
+
+nft_uri = QmY1iuxbjp1jKfRuPUpBZDT6ZY8vxyPs8dsJsFR4sprkHK
+
+// tested on goerli because it is faster than hyperspace
+demo_video = https://gateway.pinata.cloud/ipfs/bafybeibqtm5rksgtyh2sw4sotqvdapzk2a4dqbpsyqrz5wvlcu45vjark4
+// tested here https://goerli.etherscan.io/address/0x500b4a51043335081a7746b8452195d57118643e
+// opensea https://testnets.opensea.io/assets/goerli/0x500b4a51043335081a7746b8452195d57118643e/0
+// rarible https://testnet.rarible.com/token/0x500b4a51043335081a7746b8452195d57118643e:0?tab=overview
+
+// i made a mistake when putting uri ...it needs nft_uri_json with open sea standard

@@ -20,7 +20,8 @@ export const Navbar = () => {
       >
         <HStack>
           <Heading as="h4" size="md">
-            PayView
+            {/* logo */}
+            <Link href={"/"}>PayView</Link>
           </Heading>
           <Flex justify="space-evenly" flex="1">
             <ButtonGroup variant="link" spacing="3">

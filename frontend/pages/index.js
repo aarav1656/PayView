@@ -11,6 +11,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {/* replace next js image to payview image */}
+
       <Image
         className=""
         src="/next.svg"
@@ -18,6 +20,7 @@ export default function Home() {
         width={180}
         height={37}
       />
+      {/* what we do wala taglines and then link to create or view cources/podcasts */}
     </>
   );
 }

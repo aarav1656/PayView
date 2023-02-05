@@ -15,7 +15,7 @@ contract PayView is ERC721, ERC721URIStorage {
     uint256 private s_tokenIdCounter; // nft mint count
     uint256 public immutable i_ammount_to_charge; // charge for an nft
     // owner defines uri of nft when he first deploys
-    string private s_uri;
+    string public s_uri;
     // owner defines the video cid deployed on ipfs when he deploys
     string public vid_cid;
 

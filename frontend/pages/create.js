@@ -9,8 +9,8 @@ import {ADDRESS} from '../utils/factory_contract';
 const { providers, Contract, getSigner, ethers   } = require('ethers');
 
 /* configure Infura auth settings */
-const projectId = "<INPUT>"
-const projectSecret ="<INPUT>"
+const projectId = "<input_id>"
+const projectSecret ="<input_secret>"
 const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
 
 const ipfs = create({ host: 'ipfs.infura.io', port: '5001', protocol: 'https', headers: {
@@ -19,6 +19,7 @@ const ipfs = create({ host: 'ipfs.infura.io', port: '5001', protocol: 'https', h
 
 function Create() {
   const [values, setValues] = useState({ message: ""});	
+  const [values2, setValues2] = useState({ message2: ""});	
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -55,7 +56,7 @@ function Create() {
     const _tokenName = document.getElementById("nftname").value
     const _symbol= document.getElementById("symbol").value
     const _uri= document.getElementById("jsonuri").value
-    const _amount=document.getElementById("amount").value
+    const _amount=ethers.utils.parseEther(document.getElementById("amount").value)
     const _vid_cid=document.getElementById("videocid").value
 
     contract.connect(signer).createNewPayView(_tokenName, _symbol, _uri, _amount, _vid_cid).then((result) => {
@@ -85,6 +86,17 @@ function Create() {
     console.log("IPFS URI: ", url2)
     setValues({ ...values, message: url2 })
   }
+
+  async function uploadVideo(){   
+    // Image Upload First
+    const fileInput = document.getElementById("video")
+    const data = fileInput.files[0]
+    const added = await ipfs.add(data)
+    const url = `https://infura-ipfs.io/ipfs/${added.path}`
+    console.log("IPFS URI: ", url)
+    setValues2({ ...values2, message2: url })
+  }
+  
 
   return (
    
@@ -130,7 +142,7 @@ function Create() {
         <Input type="file" id="image" />
       </FormControl>
       <FormLabel htmlFor="name" color="Yellow">
-      Your IPFS Link: {values.message} </FormLabel>
+      Your IPFS Link, paste in NFT_JSON_URI field: {values.message} </FormLabel>
       <Button mt={4} variantColor="teal" onClick={uploadIPFS} color="black">
             Create JSON & Upload to IPFS
           </Button>
@@ -148,13 +160,19 @@ function Create() {
             </FormLabel>
             <Input type="text" id="videocid" color="white" />
           </FormControl>
-          <FormLabel htmlFor="name" color="white">
+          <FormLabel htmlFor="name" color="yellow">
           OR
             </FormLabel>
+            <Box bg='gray.800' minH="20vh" w='100%' p={4} color='white' alignItems="center">
+            <Box maxW="500px" minH="200px" borderWidth="2px" rounded="lg" overflow="hidden" boxShadow="md">
             <FormControl mt={4}>
-        <FormLabel htmlFor="file">Upload File</FormLabel>
-        <Input type="file" id="file" />
+        <FormLabel htmlFor="file">Upload Video</FormLabel>
+        <Input type="file" id="video" />
       </FormControl>
+      <Button color="black"  onClick={uploadVideo}>Upload Video</Button>
+      <FormLabel htmlFor="name" color="Yellow">
+      Your IPFS Link, paste in "Enter your video CID" field: {values2.message2} </FormLabel>
+      </Box></Box>
           <Button mt={4} variantColor="teal" onClick={handleSubmit} color="black">
             Submit
           </Button>

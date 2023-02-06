@@ -18,28 +18,28 @@ export const Navbar = () => {
           lg: "5",
         }}
       >
-        <HStack>
-          <Heading as="h4" size="md">
+        
+          <Heading  size="lg" style={{textAlign: "Center"}}>
             {/* logo */}
-            <Link href={"/"}>PayView</Link>
+            <Link href={"/about"}>PayView</Link>
           </Heading>
           <Flex justify="space-evenly" flex="1">
-            <ButtonGroup variant="link" spacing="3">
-              {["Create", "View", "About"].map((item) => (
-                <Button>
+            <ButtonGroup variant="link" spacing="8" >
+              {["About", "Create", "Marketplace" ,"View"].map((item) => (
+                <Button style={{ fontSize: '40px' }}>
                   <Link href={`/${item.toLocaleLowerCase()}`} key={item}>
                     {item}
                   </Link>
                 </Button>
               ))}
             </ButtonGroup>
-            <HStack>
-              <a>
-                <ConnectButton label="Connect" />
+            
+              <a >
+                <ConnectButton label="Connect" style={{textAlign: "right"}} />
               </a>
-            </HStack>
+          
           </Flex>
-        </HStack>
+        
       </Container>
     </Box>
   );

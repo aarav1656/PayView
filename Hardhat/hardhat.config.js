@@ -7,7 +7,7 @@ require("dotenv").config();
     solidity: "0.8.17",
     networks: {
       hyperspace: {
-        url: `https://api.hyperspace.node.glif.io/rpc/v0`,
+        url: `https://api.hyperspace.node.glif.io/rpc/v1`,
         accounts: [process.env.PRIVATE_KEY],
       },
       goerli: {
